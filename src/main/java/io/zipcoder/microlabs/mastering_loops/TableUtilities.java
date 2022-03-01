@@ -4,23 +4,42 @@ import java.util.Scanner;
 
 public class TableUtilities {
     public static String getSmallMultiplicationTable() {
-        return getMultiplicationTable(4);
+        return getMultiplicationTable(5);
     }
 
     public static String getLargeMultiplicationTable() {
-        return getMultiplicationTable(9);
+        return getMultiplicationTable(10);
 
     }
 
     public static String getMultiplicationTable(int tableSize) {
-        String result = "";
-        for (int i = 1; i < tableSize + 1; i++){
-            result += i;
-            for (int j = i + 1; j < tableSize + 1; j++) {
-                result += j + " | ";
-            }
-            result += '\n';
-        }
+        String result = " ";
+        int i = 1;
+        int multiple = 1;
+
+      for (; i < tableSize + 1; i++) {
+          for (int j = 1; j < tableSize + 1; j ++){
+
+              if (j * multiple < 10){
+              result += " " + j * multiple;
+              } else {
+                  result += j * multiple;
+              }
+                      if (j == tableSize) {
+                          result += " |";
+                      }else if (j * multiple < 100) {
+                          result += " | ";
+                      } else {
+                          result += "| ";
+                      }
+          }
+          result += '\n';
+          if (i != tableSize) result += " ";
+          multiple++;
+  }
         return result;
+
     }
+
 }
+
